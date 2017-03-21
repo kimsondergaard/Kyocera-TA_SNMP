@@ -1,0 +1,1 @@
+# Kyocera-TA_SNMP
