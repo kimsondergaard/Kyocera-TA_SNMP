@@ -94,9 +94,7 @@ Key/Black: ${key}% ${kname} " >> MFP.txt
 #WRITE TO MYSQL
 
 
-#mysql --host=xxx.xxx.xxx.xxx --user=USERNAME --password=PASSWORD status_printer -e "INSERT INTO DATABASENAME (serial,model,total,a3c,a3m,a4m,a4c,hostname,scan,ip,cyan,magenta,yellow,key)
- #VALUES('${serial}','${model}','${total}','${a3c}','${a3m}','${a4m}','${a4c}','${hostname}','${scan}','${ip}','${cyan}','${magenta}','${yellow}','${key}');"
-
-
+#mysql --host=xxx.xxx.xxx.xxx --user=USERNAME --password=PASSWORD status_printer -e "INSERT INTO DATABASENAME (serial,model,ip,hostname,scan,total,a3c,a3m,a4c,a4m,cyan,magenta,yellow,key)
+ #VALUES('${serial}','${model}','${ip}','${hostname}','${scan}','${total}','${a3c}','${a3m}','${a4c}','${a4m}','${cyan}','${magenta}','${yellow}','${key}');"
 done
 
