@@ -2,8 +2,8 @@
  By Kim Søndergaard
  Requires SNMPGET is installed
  Run in linux, or Windows with BASH installed by ./snmp.sh
- Config file is requires to use this script, place the config in a file named config.sh, with chmod 777. 
- Template # 
+ Config file is requires to use this script, place the config in a file named config.sh, with chmod 777, in the same folder as script. 
+ # Config template
 
 
 #!/bin/bash
