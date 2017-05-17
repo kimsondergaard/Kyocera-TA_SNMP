@@ -23,8 +23,8 @@
 #iso.3.6.1.2.1.43.11.1.1.9.1.4 = INTEGER: 13250
 #iso.3.6.1.2.1.43.11.1.1.9.1.5 = INTEGER: -3
 
-ips=('192.168.111.240') # Alternative if more than one MFP ('xxx.xxx.xxx.xxx','xxx.xxx.xxx.xxx')
-
+#ips=('192.168.111.240') # Alternative if more than one MFP ('xxx.xxx.xxx.xxx','xxx.xxx.xxx.xxx')
+. config.sh
 for ip in ${ips[@]} ; do
 serial=$(snmpget -v2c -c public $ip iso.3.6.1.2.1.43.5.1.1.17.1 | cut -d" " -f4-) 
 model=$(snmpget -v2c -c public $ip iso.3.6.1.2.1.43.5.1.1.16.1 | cut -d" " -f4-)
@@ -65,36 +65,10 @@ yresult=`echo "scale=2; $tyellow/$cbase * $pro" | bc`
 yellow=${yresult%.*}
 
 
-
-#WRITE TO FILE
- 
-echo "
-INFO-----------------------
-Serialnumber: ${serial} 
-Model: ${model} 
-Ip address: ${ip}
-Hostname: ${hostname} 
-
-PAPER USAGE----------------
-Total Scan: ${scan} 
-Total print: ${total} 
-A3 Color: ${a3c} 
-A3 B/W: ${a3m} 
-A4 Color: ${a4c} 
-A4 B/W: ${a4m} 
-
-TONER USAGE----------------
-Cyan: ${cyan}% ${cname}
-Magenta: ${magenta}% ${mname} 
-Yellow: ${yellow}% ${yname}
-Key/Black: ${key}% ${kname} " >> MFP.txt
-
-
-
 #WRITE TO MYSQL
+NOW=$(date +"%d/%m-%Y")
 
-
-#mysql --host=xxx.xxx.xxx.xxx --user=USERNAME --password=PASSWORD status_printer -e "INSERT INTO DATABASENAME (serial,model,ip,hostname,scan,total,a3c,a3m,a4c,a4m,cyan,magenta,yellow,key)
- #VALUES('${serial}','${model}','${ip}','${hostname}','${scan}','${total}','${a3c}','${a3m}','${a4c}','${a4m}','${cyan}','${magenta}','${yellow}','${key}');"
+mysql --host=mysql11.gigahost.dk --user=kimsondergaard --password=Kiksemand5700 kimsondergaard_kyocera -e "INSERT INTO maskine (SN,MN,IP,HN,scan,total,A3C,A3M,A4C,A4M,c,m,y,k,dato)
+ VALUES('${serial}','${model}','${ip}','${hostname}','${scan}','${total}','${a3c}','${a3m}','${a4c}','${a4m}','${cyan}','${magenta}','${yellow}','${key}','${NOW}');"
 done
 
