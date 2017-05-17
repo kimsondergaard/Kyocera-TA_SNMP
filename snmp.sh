@@ -1,6 +1,7 @@
 #!/bin/bash
 # Kyocera / Triumph Adler / UTAX snmp printer status
 # Kim Søndergaard
+# GIT V1
 #Run in linux, or Windows with BASH installed by ./snmp.sh
 
 #Toner name = snmp_get('.1.3.6.1.2.1.43.11.1.1.6.1.		
