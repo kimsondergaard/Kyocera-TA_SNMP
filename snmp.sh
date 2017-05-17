@@ -68,7 +68,8 @@ yellow=${yresult%.*}
 #WRITE TO MYSQL
 NOW=$(date +"%d/%m-%Y")
 
-mysql --host=mysql11.gigahost.dk --user=kimsondergaard --password=Kiksemand5700 kimsondergaard_kyocera -e "INSERT INTO maskine (SN,MN,IP,HN,scan,total,A3C,A3M,A4C,A4M,c,m,y,k,dato)
+mysql --host=${host} --user=${user} --password=${pw}  ${db}  -e "INSERT INTO ${tb}  (SN,MN,IP,HN,scan,total,A3C,A3M,A4C,A4M,c,m,y,k,dato)
  VALUES('${serial}','${model}','${ip}','${hostname}','${scan}','${total}','${a3c}','${a3m}','${a4c}','${a4m}','${cyan}','${magenta}','${yellow}','${key}','${NOW}');"
 done
+
 
