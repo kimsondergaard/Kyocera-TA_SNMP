@@ -25,7 +25,7 @@
 #iso.3.6.1.2.1.43.11.1.1.9.1.5 = INTEGER: -3
 
 #ips=('192.168.111.240') # Alternative if more than one MFP ('xxx.xxx.xxx.xxx','xxx.xxx.xxx.xxx')
-. config.sh
+. /Kyocera/Kyocera-TA_SNMP/config.sh
 for ip in ${ips[@]} ; do
 serial=$(snmpget -v2c -c public $ip iso.3.6.1.2.1.43.5.1.1.17.1 | cut -d" " -f4-) 
 model=$(snmpget -v2c -c public $ip iso.3.6.1.2.1.43.5.1.1.16.1 | cut -d" " -f4-)
