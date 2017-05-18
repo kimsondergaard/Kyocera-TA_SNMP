@@ -68,9 +68,10 @@ yellow=${yresult%.*}
 
 #WRITE TO MYSQL
 NOW=$(date +"%d/%m-%Y")
+TS=date +%s
 
-mysql --host=${host} --user=${user} --password=${pw}  ${db}  -e "INSERT INTO ${tb}  (SN,MN,IP,HN,scan,total,A3C,A3M,A4C,A4M,c,m,y,k,dato)
- VALUES('${serial}','${model}','${ip}','${hostname}','${scan}','${total}','${a3c}','${a3m}','${a4c}','${a4m}','${cyan}','${magenta}','${yellow}','${key}','${NOW}');"
+mysql --host=${host} --user=${user} --password=${pw}  ${db}  -e "INSERT INTO ${tb}  (SN,MN,IP,HN,scan,total,A3C,A3M,A4C,A4M,c,m,y,k,dato,TS)
+ VALUES('${serial}','${model}','${ip}','${hostname}','${scan}','${total}','${a3c}','${a3m}','${a4c}','${a4m}','${cyan}','${magenta}','${yellow}','${key}','${NOW}','${TS}');"
 done
 
 
