@@ -37,6 +37,10 @@ a4c=$(snmpget -v2c -c public $ip iso.3.6.1.4.1.1347.42.2.1.1.1.8.1.3 | cut -d" "
 hostname=$(snmpget -v2c -c public $ip iso.3.6.1.4.1.1347.40.10.1.1.5.1 | cut -d" " -f4-) 
 scan=$(snmpget -v2c -c public $ip iso.3.6.1.4.1.1347.46.10.1.1.5.3 | cut -d" " -f4-)
 
+temp="${serial%\"}"
+serial="${temp#\"}"
+
+
 
 cname=$(snmpget -v2c -c public $ip iso.3.6.1.2.1.43.11.1.1.6.1.1 | cut -d" " -f4-)
 mname=$(snmpget -v2c -c public $ip iso.3.6.1.2.1.43.11.1.1.6.1.2 | cut -d" " -f4-)
