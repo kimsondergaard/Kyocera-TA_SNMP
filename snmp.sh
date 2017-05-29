@@ -37,9 +37,6 @@ a4c=$(snmpget -v2c -c public $ip iso.3.6.1.4.1.1347.42.2.1.1.1.8.1.3 | cut -d" "
 hostname=$(snmpget -v2c -c public $ip iso.3.6.1.4.1.1347.40.10.1.1.5.1 | cut -d" " -f4-) 
 scan=$(snmpget -v2c -c public $ip iso.3.6.1.4.1.1347.46.10.1.1.5.3 | cut -d" " -f4-)
 
-serial = ${serial//.}
-model = ${model//.}
-hostname = ${hostname//.}
 
 cname=$(snmpget -v2c -c public $ip iso.3.6.1.2.1.43.11.1.1.6.1.1 | cut -d" " -f4-)
 mname=$(snmpget -v2c -c public $ip iso.3.6.1.2.1.43.11.1.1.6.1.2 | cut -d" " -f4-)
@@ -74,7 +71,7 @@ NOW=$(date +"%d/%m-%Y")
 TS=$(date +"%s")
 
 mysql --host=${host} --user=${user} --password=${pw}  ${db}  -e "INSERT INTO ${tb}  (SN,MN,IP,HN,scan,total,A3C,A3M,A4C,A4M,c,m,y,k,dato,TS)
- VALUES('${serial}','${model}','${ip}','${hostname}','${scan}','${total}','${a3c}','${a3m}','${a4c}','${a4m}','${cyan}','${magenta}','${yellow}','${key}','${NOW}','${TS}');"
+ VALUES('${serial//.}','${model//.}','${ip}','${hostname//.}','${scan}','${total}','${a3c}','${a3m}','${a4c}','${a4m}','${cyan}','${magenta}','${yellow}','${key}','${NOW}','${TS}');"
 done
 
 
