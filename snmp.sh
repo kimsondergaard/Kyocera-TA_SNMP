@@ -40,12 +40,12 @@ scan=$(snmpget -v2c -c public $ip iso.3.6.1.4.1.1347.46.10.1.1.5.3 | cut -d" " -
 temp="${serial%\"}"
 serial="${temp#\"}"
 
-temp="${model%\"}"
-model="${temp#\"}"
+temp2="${model%\"}"
+model="${temp2#\"}"
 
 
-temp="${hostname%\"}"
-hostname="${temp#\"}"
+temp3="${hostname%\"}"
+hostname="${temp3#\"}"
 
 
 cname=$(snmpget -v2c -c public $ip iso.3.6.1.2.1.43.11.1.1.6.1.1 | cut -d" " -f4-)
